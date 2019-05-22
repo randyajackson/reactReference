@@ -1,2 +1,2 @@
 # reactReference
-notes for react course
+notes for udemy react course

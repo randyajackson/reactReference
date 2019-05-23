@@ -255,6 +255,13 @@ console.log(secondPerson);
 
 //refreshing array functions
 //_____________________________________________________________________________________
+const numbers = [1,2,3];
+const dblNumArray = numbers.map( () => {
+    return num * 2;
+});
+
+console.log(numbers); // prints [1,2,3]
+console.log(dblNumArray); // prints [2,4,6]
 
 
 

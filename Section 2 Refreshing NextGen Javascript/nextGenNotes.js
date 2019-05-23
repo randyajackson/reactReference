@@ -108,8 +108,153 @@ const person = new Person();
 person.printMyName();
 person.printGender();
 
+//Classes, properties, and methods
+//___________________________________________
 
+// properties are like "variables attached to classes / objects"
+// methods are like "functions attached to classes / objects"
 
+//requires babel to use
+class Human{
+    gender = 'male'; // alternate way to call constructor
+
+    printGender = () => { //functions will need to be arrow
+        console.log(this.gender);
+    }
+}
+
+class Person extends Human{
+    name = 'Randy';
+    gender = 'female'; 
+
+    printMyName = () => {
+        console.log(this.name);
+    }
+}
+
+const person = new Person();
+person.printMyName();
+person.printGender();
+
+//the spread and rest operator
+//_________________________________________________
+
+//spread - used to split up array elements OR object properties
+const newArray = [...oldArray,1,2]
+const newObject = {...oldObject, newProp: 5}
+
+//rest - used to merge a list of function arguments into an array
+function sortArgs(...args){
+    return args.sort()
+}
+
+const numbers = [1,2,3];
+const newNumbers = [...numbers, 4];
+
+console.log(newNumbers);
+//prints [1,2,3,4]
+
+const person = {
+    name: 'Randy'
+};
+
+const newPerson = {
+    ...person,
+    age: 28
+};
+console.log(newPerson);
+
+//prints
+// [object Object] {
+//     age:28,
+//     name: "Randy"
+// }
+
+const filter = (...args) => {
+    return args.filter(el => el === 1);//=== checks for value and type
+}
+
+console.log(filter(1,2,3));
+//prints [1]
+
+//destructuring
+//___________________________________________________________________
+
+//easily extract array elements or object properties and store them in variables
+
+//array destructuring
+[a,b] = ['Hello', 'Max']
+console.log(a) // Hello
+console.log(b) //Max
+
+//object destructuring
+{name} = {name: 'Max', age: 28}
+console.log(name) // Max
+console.log(age) // undefined
+
+const numbers = [1,2,3];
+[num1,num2] = numbers;
+console.log(num1,num2);
+//prints 1 2
+[num1, , num3] = numbers;
+console.log(num1, num3);
+//prints 1 3
+
+//reference and primitive types refresher
+//_________________________________________________________________________
+
+const number = 1;
+const num2 = number;
+
+console.log(num2); //prints 1
+
+const person = {
+    name: 'Max'
+};
+
+const secondPerson = person;
+
+console.log(secondPerson);
+
+//prints
+//[object Object] {
+    //name: "Max"
+//}
+//--------------------------------example of changing 1
+const person = {
+    name: 'Max'
+};
+
+const secondPerson = person;
+
+person.name = 'Manu'; // since secondPerson is a copy (pointer) of person, name will reflect Manu
+
+console.log(secondPerson);
+
+//prints
+//[object Object] {
+    //name: "Manu"
+//}
+//--------------------------------example of changing 2
+const person = {
+    name: 'Max'
+};
+
+const secondPerson = { // this creates a real copy so changing person does not change secondPerson
+    ...person;
+} 
+
+person.name = 'Manu'; // since secondPerson is a copy (pointer) of person, name will reflect Manu
+
+console.log(secondPerson);
+
+//prints
+//[object Object] {
+    //name: "Max"
+//}
+
+//refreshing array functions
+//_____________________________________________________________________________________
 
 
 

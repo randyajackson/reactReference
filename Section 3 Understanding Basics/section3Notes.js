@@ -24,6 +24,15 @@
  * 
  * ----------------------------notes in app.js
  * 
+ * new functional component, add folder in src
+ * add js file
+ * 
+ * ----------------------------notes in src > Person > Person.js
+ * 
+ * component is a function that returns some jsx
+ * 
+ * name components with capital starting since many lowercase words in react are reserved for jsx
+ * 
  * 
  * 
  */

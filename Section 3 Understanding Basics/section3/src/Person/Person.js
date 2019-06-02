@@ -1,9 +1,16 @@
 import React from 'react';
 
-const person = () => {
+const person = (props) => { // props are properties from app.js
     //ES6 way to create a function
-    return <p>I'm a person and I am {Math.floor(Math.random() * 30)} years old!!</p>
+    return(
+    <div>
+        <p>I'm {props.name} person and I am {props.age} years old!!</p>
+        <p>{props.children}</p>
+    </div>
+    );
     //need to import react as return is a react function
+
+    //props.children is <Person....> This text</Person>
 };
 // you cannot create a function in person, but you can call them
 

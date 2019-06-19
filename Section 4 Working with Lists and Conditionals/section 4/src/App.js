@@ -18,7 +18,8 @@ const [personsState, setPersonsState] = useState({
     { name: 'Manu', age: 29},
     { name: 'Stephanie', age: 26}
   ],
-  otherState: 'some other value'
+  otherState: 'some other value',
+  showPersons: false
 });
 
 const switchNameHandler = (newName) => {
@@ -39,6 +40,19 @@ const nameChangedHandler = (event) => {
 ] });
 };
 
+const togglePersonsHandler = () =>{
+  const doesShow = personsState.showPersons;
+  setPersonsState({
+    persons: [
+      { name: 'Max', age: 28},
+      { name: 'Manu', age: 29},
+      { name: 'Stephanie', age: 26}
+    ],
+    otherState: 'some other value',
+    showPersons: !doesShow
+  });
+}
+
 const style = {
   backgroundColor: 'white',
   font: 'inherit',
@@ -51,10 +65,15 @@ const style = {
     <div className="App"> 
       <h1>Test</h1>
       <button style={style}
-      onClick={ () => switchNameHandler('Maximillian!!')}>Switch</button>
-      <Person  name={personsState.persons[0].name} age={personsState.persons[0].age}/> 
-      <Person  name={personsState.persons[1].name} age={personsState.persons[1].age} click= {switchNameHandler.bind(this, 'Max!')} changed= {nameChangedHandler}>My Hobbies: Racing</Person>
-      <Person  name={personsState.persons[2].name} age={personsState.persons[2].age}/>
+      onClick={togglePersonsHandler}>Switch</button>
+      { personsState.showPersons === true ? //converted to React.CreateElement behind the scenes
+        <div>
+        <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/> 
+        <Person name={personsState.persons[1].name} age={personsState.persons[1].age} click= {switchNameHandler.bind(this, 'Max!')} changed= {nameChangedHandler}>My Hobbies: Racing</Person>
+        <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
+      </div> : null
+      }
+      
     </div>
     //name and age are properties or "props"
      //in JSX it is onClick

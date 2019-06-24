@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import person from './Person/Person';
 //test
 
 const App = props => { // this is the same as class App extends Componenet { render(){ return(...) } }
@@ -60,20 +61,31 @@ const style = {
   padding: '8px',
   cursor: 'pointer'
 }
-  return ( // this is not html, it is jsx
+  let persons = null;
+
+  if(personsState.showPersons){ //variable before the return changes are made
+      persons = (
+      <div>
+        {personsState.persons.map(person => { //map is executed on every element in person list with arrow function
+          
+        })}
+
+        <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/> 
+        <Person name={personsState.persons[1].name} age={personsState.persons[1].age} click= {switchNameHandler.bind(this, 'Max!')} changed= {nameChangedHandler}>My Hobbies: Racing</Person>
+        <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
+      </div>
+      );
+  }
+  return ( // this is not html, it is jsx // when it renders to the screen, it executes everything in the render method
     //class is html, className is jsx, className renders to class through react
     <div className="App"> 
       <h1>Test</h1>
       <button style={style}
+
+      //{ personsState.showPersons === true ? //converted to React.CreateElement behind the scenes - goes under onClick
       onClick={togglePersonsHandler}>Switch</button>
-      { personsState.showPersons === true ? //converted to React.CreateElement behind the scenes
-        <div>
-        <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/> 
-        <Person name={personsState.persons[1].name} age={personsState.persons[1].age} click= {switchNameHandler.bind(this, 'Max!')} changed= {nameChangedHandler}>My Hobbies: Racing</Person>
-        <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
-      </div> : null
-      }
-      
+
+      {persons}   
     </div>
     //name and age are properties or "props"
      //in JSX it is onClick
